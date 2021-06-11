@@ -1,0 +1,30 @@
+int sensor_pin = D5;
+long lastReading = 0;
+
+void setup() {
+    
+    pinMode(sensor_pin, INPUT);
+}
+
+void loop() {
+    
+    if (millis() - lastReading > 72000000) {
+            
+        if (digitalRead(sensor_pin)) {
+            
+        Particle.publish("motion_detected");
+            
+        lastReading = millis();
+        
+        }
+        
+        else {
+            
+        }
+        
+    }
+    
+    else {
+            
+    }
+} 
